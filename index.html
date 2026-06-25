@@ -1,171 +1,107 @@
+<button onclick="abrirAdmin()">⚙️ Admin</button>
+<button onclick="cerrarAdmin()">❌ Cerrar admin</button>
+<div id="adminPanel" style="display:none; border:1px solid #ccc; padding:10px; margin:10px;">
+  <h2>🔒 ADMIN</h2>
+<hr>
+
+<h2>🧾 Cierre de caja</h2>
+
+<button onclick="verCierre()">Ver cierre</button>
+<button onclick="cerrarDia()">Cerrar día</button>
+
+<div id="cierreCaja"></div>
+  <input id="adminPin" placeholder="PIN">
+  <button onclick="validarPin()">Entrar</button>
+
+  <div id="adminContenido" style="display:none;">
+    <h3>📦 Productos</h3>
+    <div id="adminProductos"></div>
+
+    <h3>➕ Nuevo producto</h3>
+    <input id="nuevoNombre" placeholder="Nombre">
+    <input id="nuevoPrecio" placeholder="Precio">
+    <input id="nuevoStock" placeholder="Stock">
+    <button onclick="agregarProducto()">Agregar</button>
+  </div>
+</div>
+<button onclick="renderHistorial()">Ver Historial</button>
+<button onclick="exportarCSV()">Exportar Excel</button>
+<div class="dashboard">
+
+  <div class="card">
+    <h3>Total vendido</h3>
+    <p id="totalVendido">Bs 0</p>
+  </div>
+
+  <div class="card">
+    <h3>Pedidos</h3>
+    <p id="totalPedidos">0</p>
+  </div>
+
+  <div class="card">
+    <h3>Entregados</h3>
+    <p id="entregados">0</p>
+  </div>
+
+  <div class="card">
+    <h3>QR / Efectivo</h3>
+    <p id="metodosPago">-</p>
+  </div>
+
+</div>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>IGLESIA LUZ Y ESPERANZA - Sistema de Caja</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link rel="manifest" href="manifest.json">
-
-<meta name="theme-color" content="#1E88E5">
-
+  <meta charset="UTF-8">
+  <title>IGLESIA LUZ Y ESPERANZA</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
+  <header>
+    ⛪ IGLESIA LUZ Y ESPERANZA
+  </header>
 
-<h1>⛪ IGLESIA LUZ Y ESPERANZA</h1>
+  <main class="container">
 
-<p>Sistema de Caja</p>
+    <!-- PRODUCTOS -->
+    <section class="productos">
+      <h2>Productos</h2>
+      <div id="listaProductos"></div>
+    </section>
 
-</header>
+    <!-- PEDIDO -->
+    <section class="pedido">
+      <h2>Pedido</h2>
+      <div id="listaPedido"></div>
 
-<main>
+      <h3>Total: Bs <span id="total">0</span></h3>
 
-<section class="productos">
+      <div class="pago">
+        <button onclick="setPago('QR')">QR</button>
+        <button onclick="setPago('EFECTIVO')">Efectivo</button>
+      </div>
 
-<h2>Productos</h2>
+      <input id="pagoCliente" placeholder="Pago cliente">
 
-<div id="listaProductos">
+      <h3>Cambio: Bs <span id="cambio">0</span></h3>
 
-</div>
+      <button onclick="crearPedido()">CREAR PEDIDO</button>
+      <hr>
 
-</section>
+<h2>📋 Historial</h2>
+<button onclick="renderHistorial()">Ver historial</button>
 
-<section class="pedido">
-
-<h2>Pedido</h2>
-
-<div id="pedido">
-
-<p>No hay productos.</p>
-
-</div>
-
-<div class="total">
-
-<h3>Total</h3>
-
-<span id="total">Bs. 0</span>
-
-</div>
-
-<div class="cobro">
-
-<label>
-
-Cliente paga
-
-</label>
-
-<input
-type="number"
-id="pagaCon"
-placeholder="0">
-
-<div class="cambio">
-
-Cambio:
-
-<span id="cambio">
-
-Bs.0
-
-</span>
-
-</div>
-
-<button id="btnCobrar">
-
-💵 COBRAR
-
+<div id="historial"></div>
+      <button onclick="cancelarPedido()" style="background:red;color:white;">
+  CANCELAR PEDIDO
 </button>
+      <div id="pedidosActivos"></div>
+    </section>
 
-<button id="btnCancelar">
+  </main>
 
-❌ Cancelar
-
-</button>
-
-</div>
-
-</section>
-
-</main>
-
-<footer>
-
-<button id="btnReporte">
-
-📊 Reportes
-
-</button>
-
-<button id="btnAdmin">
-
-⚙️ Administrador
-
-</button>
-
-</footer>
-
-<!-- Modal Administrador -->
-
-<div id="adminModal" class="modal">
-
-<div class="modal-content">
-
-<h2>Administrador</h2>
-
-<input
-type="password"
-id="pin"
-placeholder="PIN">
-
-<button id="entrarAdmin">
-
-Entrar
-
-</button>
-
-<button id="cerrarAdmin">
-
-Cerrar
-
-</button>
-
-</div>
-
-</div>
-
-<!-- Modal Reporte -->
-
-<div id="reporteModal" class="modal">
-
-<div class="modal-content">
-
-<h2>Reporte del Día</h2>
-
-<div id="reporteContenido">
-
-</div>
-
-<button id="cerrarReporte">
-
-Cerrar
-
-</button>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
+  <script src="app.js"></script>
 </body>
-
 </html>
+<button onclick="activarKiosko()">🖥️ Kiosko</button>
