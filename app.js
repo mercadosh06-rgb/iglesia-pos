@@ -150,28 +150,14 @@ function renderPedidos() {
     });
 }
 function entregar(id) {
-  pedidos = pedidos.map(p => {
-    if (p.id === id && !p.entregado) {
-      p.entregado = true;
+  let pedido = pedidos.find(p => p.id === id);
 
-      // devolver stock correctamente
-      p.productos.forEach(prod => {
-        let productoOriginal = productos.find(x => x.nombre === prod.nombre);
+  if (!pedido) return;
 
-        if (productoOriginal) {
-          productoOriginal.stock++;
-        }
-      });
-    }
-
-    return p;
-  });
-
-  localStorage.setItem("pedidos", JSON.stringify(pedidos));
+  pedido.entregado = true;
 
   renderPedidos();
-  actualizarDashboard();
-  renderProductos();
+  renderHistorial();
 }
 function actualizarDashboard() {
   let total = 0;
