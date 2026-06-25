@@ -6,6 +6,7 @@ let productos = [
   { nombre: "Latte", precio: 10, stock: 50, activo: true },
   { nombre: "Americano", precio: 8, stock: 50, activo: true }
 ];
+
 let pedido = [];
 let historial = JSON.parse(localStorage.getItem("historial")) || [];
 let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
@@ -21,14 +22,11 @@ renderPedidos();
 // --------------------
 function renderProductos() {
   const div = document.getElementById("listaProductos");
-  if (!div) return;
-
   div.innerHTML = "";
 
   productos.forEach((p, i) => {
 
-    // si no tiene activo definido, lo asumimos true
-    if (p.activo === false) return;
+    if (!p.activo) return; // 👈 OCULTO TOTAL
 
     let agotado = p.stock <= 0;
 
@@ -51,12 +49,11 @@ function agregar(i) {
   if (productos[i].stock <= 0) return;
 
   productos[i].stock--;
+
   pedido.push({
     nombre: productos[i].nombre,
     precio: productos[i].precio
   });
-
-  sonido();
 
   renderProductos();
   renderPedido();
@@ -312,10 +309,6 @@ function validarPin() {
 }
 function renderAdminProductos() {
   const div = document.getElementById("adminProductos");
-  <div>
-  Activo:
-  <input type="checkbox" ${p.activo ? "checked" : ""} onchange="toggleActivo(${i}, this.checked)">
-</div>
   div.innerHTML = "";
 
   productos.forEach((p, i) => {
@@ -324,7 +317,10 @@ function renderAdminProductos() {
         ${p.nombre} <br>
         Precio: <input value="${p.precio}" onchange="editarPrecio(${i}, this.value)">
         Stock: <input value="${p.stock}" onchange="editarStock(${i}, this.value)">
-      </div>
+      <div>
+  Activo:
+  <input type="checkbox" ${p.activo ? "checked" : ""} onchange="toggleActivo(${i}, this.checked)">
+</div>
     `;
   });
 }
