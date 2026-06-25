@@ -132,3 +132,48 @@ input {
   font-size: 18px;
   padding: 14px 18px;
 }
+/* ===== MODO MÓVIL PRO ===== */
+@media (max-width: 600px) {
+
+  header {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    max-height: none;
+    padding: 8px;
+  }
+
+  .producto {
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+  }
+
+  .producto button {
+    font-size: 20px;
+    padding: 14px;
+    width: 50px;
+    height: 50px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  input {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
