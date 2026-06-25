@@ -26,8 +26,6 @@ function renderProductos() {
 
   productos.forEach((p, i) => {
 
-    if (!p.activo) return; // 👈 OCULTO TOTAL
-
     let agotado = p.stock <= 0;
 
     div.innerHTML += `
@@ -48,20 +46,15 @@ function renderProductos() {
 function agregar(i) {
   if (productos[i].stock <= 0) return;
 
-  productos[i].stock--; // 👈 aquí se descuenta SOLO una vez
+  productos[i].stock--;
 
   pedido.push({
     nombre: productos[i].nombre,
     precio: productos[i].precio
   });
-}
+
   renderProductos();
   renderPedido();
-
-  guardarProductos();
-
-  function guardarProductos() {
-  localStorage.setItem("productos", JSON.stringify(productos));
 }
 function renderPedido() {
   const div = document.getElementById("listaPedido");
@@ -322,10 +315,7 @@ function renderAdminProductos() {
         ${p.nombre} <br>
         Precio: <input value="${p.precio}" onchange="editarPrecio(${i}, this.value)">
         Stock: <input value="${p.stock}" onchange="editarStock(${i}, this.value)">
-      <div>
-  Activo:
-  <input type="checkbox" ${p.activo ? "checked" : ""} onchange="toggleActivo(${i}, this.checked)">
-</div>
+      </div>
     `;
   });
 }
@@ -408,9 +398,4 @@ function activarKiosko() {
 function sonido() {
   let audio = new Audio("https://actions.google.com/sounds/v1/office/coin_casing_dropping.ogg");
   audio.play();
-}
-function toggleActivo(i, estado) {
-  productos[i].activo = estado;
-  renderProductos();
-  renderAdminProductos();
 }
