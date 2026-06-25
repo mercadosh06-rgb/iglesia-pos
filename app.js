@@ -21,11 +21,14 @@ renderPedidos();
 // --------------------
 function renderProductos() {
   const div = document.getElementById("listaProductos");
+  if (!div) return;
+
   div.innerHTML = "";
 
   productos.forEach((p, i) => {
 
-    if (!p.activo) return; // 👈 OCULTO TOTAL
+    // si no tiene activo definido, lo asumimos true
+    if (p.activo === false) return;
 
     let agotado = p.stock <= 0;
 
