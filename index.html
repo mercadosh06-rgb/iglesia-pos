@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IGLESIA LUZ Y ESPERANZA - Sistema de Caja</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#1E88E5">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>⛪ IGLESIA LUZ Y ESPERANZA</h1>
+
+<p>Sistema de Caja</p>
+
+</header>
+
+<main>
+
+<section class="productos">
+
+<h2>Productos</h2>
+
+<div id="listaProductos">
+
+</div>
+
+</section>
+
+<section class="pedido">
+
+<h2>Pedido</h2>
+
+<div id="pedido">
+
+<p>No hay productos.</p>
+
+</div>
+
+<div class="total">
+
+<h3>Total</h3>
+
+<span id="total">Bs. 0</span>
+
+</div>
+
+<div class="cobro">
+
+<label>
+
+Cliente paga
+
+</label>
+
+<input
+type="number"
+id="pagaCon"
+placeholder="0">
+
+<div class="cambio">
+
+Cambio:
+
+<span id="cambio">
+
+Bs.0
+
+</span>
+
+</div>
+
+<button id="btnCobrar">
+
+💵 COBRAR
+
+</button>
+
+<button id="btnCancelar">
+
+❌ Cancelar
+
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<button id="btnReporte">
+
+📊 Reportes
+
+</button>
+
+<button id="btnAdmin">
+
+⚙️ Administrador
+
+</button>
+
+</footer>
+
+<!-- Modal Administrador -->
+
+<div id="adminModal" class="modal">
+
+<div class="modal-content">
+
+<h2>Administrador</h2>
+
+<input
+type="password"
+id="pin"
+placeholder="PIN">
+
+<button id="entrarAdmin">
+
+Entrar
+
+</button>
+
+<button id="cerrarAdmin">
+
+Cerrar
+
+</button>
+
+</div>
+
+</div>
+
+<!-- Modal Reporte -->
+
+<div id="reporteModal" class="modal">
+
+<div class="modal-content">
+
+<h2>Reporte del Día</h2>
+
+<div id="reporteContenido">
+
+</div>
+
+<button id="cerrarReporte">
+
+Cerrar
+
+</button>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f8;
+  color: #333;
+}
+
+/* HEADER */
+header {
+  background: #1e88e5;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 20px;
+}
+
+header p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* LAYOUT */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+/* PRODUCTOS */
+.productos, .pedido {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.productos h2,
+.pedido h2 {
+  margin-bottom: 10px;
+}
+
+/* BOTONES PRODUCTOS */
+.producto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.producto button {
+  background: #1e88e5;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.producto button:hover {
+  background: #1565c0;
+}
+
+/* PEDIDO */
+#pedido p {
+  margin: 5px 0;
+}
+
+.total {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* COBRO */
+.cobro {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cobro input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#btnCobrar {
+  background: #2ecc71;
+  color: white;
+}
+
+#btnCobrar:hover {
+  background: #27ae60;
+}
+
+#btnCancelar {
+  background: #e74c3c;
+  color: white;
+}
+
+#btnCancelar:hover {
+  background: #c0392b;
+}
+
+/* FOOTER */
+footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+footer button {
+  background: #333;
+  color: white;
+  width: 45%;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  margin: 100px auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+}
