@@ -2,11 +2,10 @@ window.onerror = function() {
   alert("Error detectado en sistema. Recarga la página.");
 };
 let productos = [
-  { nombre: "Pollo", precio: 25, stock: 80 },
-  { nombre: "Latte", precio: 10, stock: 50 },
-  { nombre: "Americano", precio: 8, stock: 50 }
+  { nombre: "Pollo", precio: 25, stock: 80, activo: true },
+  { nombre: "Latte", precio: 10, stock: 50, activo: true },
+  { nombre: "Americano", precio: 8, stock: 50, activo: true }
 ];
-
 let pedido = [];
 let historial = JSON.parse(localStorage.getItem("historial")) || [];
 let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
@@ -25,14 +24,20 @@ function renderProductos() {
   div.innerHTML = "";
 
   productos.forEach((p, i) => {
+
+    if (!p.activo) return; // 👈 OCULTO TOTAL
+
+    let agotado = p.stock <= 0;
+
     div.innerHTML += `
       <div class="producto">
         <div>
           <b>${p.nombre}</b><br>
-          Bs ${p.precio} | Stock: ${p.stock}
+          Bs ${p.precio}<br>
+          ${agotado ? "❌ AGOTADO" : "Stock: " + p.stock}
         </div>
 
-        <button onclick="agregar(${i})" ${p.stock <= 0 ? "disabled" : ""}>
+        <button onclick="agregar(${i})" ${agotado ? "disabled" : ""}>
           +
         </button>
       </div>
@@ -304,6 +309,10 @@ function validarPin() {
 }
 function renderAdminProductos() {
   const div = document.getElementById("adminProductos");
+  <div>
+  Activo:
+  <input type="checkbox" ${p.activo ? "checked" : ""} onchange="toggleActivo(${i}, this.checked)">
+</div>
   div.innerHTML = "";
 
   productos.forEach((p, i) => {
@@ -395,4 +404,9 @@ function activarKiosko() {
 function sonido() {
   let audio = new Audio("https://actions.google.com/sounds/v1/office/coin_casing_dropping.ogg");
   audio.play();
+}
+function toggleActivo(i, estado) {
+  productos[i].activo = estado;
+  renderProductos();
+  renderAdminProductos();
 }
