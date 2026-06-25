@@ -292,6 +292,7 @@ function validarPin() {
   }
 }
 function renderAdminProductos() {
+  
   const div = document.getElementById("adminProductos");
   div.innerHTML = "";
 
@@ -301,7 +302,10 @@ function renderAdminProductos() {
         ${p.nombre} <br>
         Precio: <input value="${p.precio}" onchange="editarPrecio(${i}, this.value)">
         Stock: <input value="${p.stock}" onchange="editarStock(${i}, this.value)">
-      </div>
+      <div>
+  Activo:
+  <input type="checkbox" ${p.activo ? "checked" : ""} onchange="toggleActivo(${i}, this.checked)">
+</div>
     `;
   });
 }
@@ -384,4 +388,9 @@ function activarKiosko() {
 function sonido() {
   let audio = new Audio("https://actions.google.com/sounds/v1/office/coin_casing_dropping.ogg");
   audio.play();
+}
+function toggleActivo(i, estado) {
+  productos[i].activo = estado;
+  renderProductos();
+  renderAdminProductos();
 }
