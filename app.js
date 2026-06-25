@@ -48,15 +48,20 @@ function renderProductos() {
 function agregar(i) {
   if (productos[i].stock <= 0) return;
 
-  productos[i].stock--;
+  productos[i].stock--; // 👈 aquí se descuenta SOLO una vez
 
   pedido.push({
     nombre: productos[i].nombre,
     precio: productos[i].precio
   });
-
+}
   renderProductos();
   renderPedido();
+
+  guardarProductos();
+
+  function guardarProductos() {
+  localStorage.setItem("productos", JSON.stringify(productos));
 }
 function renderPedido() {
   const div = document.getElementById("listaPedido");
